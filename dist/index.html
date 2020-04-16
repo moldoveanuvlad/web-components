@@ -4,23 +4,50 @@
     <title>Dropdown with Web Components</title>
   </head>
   <body>
-    <road-dropdown
-      label="Dropdown"
-      option="option2"
-      options='{ "option1": { "label": "Option 1" }, "option2": { "label": "Option 2" } }'
-    ></road-dropdown>
-
+    <bar-chart 
+      label="First bar chart" 
+      data='[{"label": "apples", "value": 3}, {"label": "oranges", "value": 10}, {"label": "apricots", "value": 6}, {"label": "grapes", "value": 4},
+      {"label": "apples", "value": 4}, {"label": "oranges", "value": 14}, {"label": "apricots", "value": 6}, {"label": "grapes", "value": 4},
+      {"label": "apples", "value": 8}, {"label": "oranges", "value": 7}, {"label": "apricots", "value": 6}, {"label": "grapes", "value": 4}]'
+      width="800"
+      height="350"
+    ></bar-chart>
+    <bar-chart 
+      label="Second bar chart" 
+      data='[{"label": "apples", "value": 9},{"label": "apples", "value": 4},{"label": "apples", "value": 3}, {"label": "apples", "value": 12}, {"label": "oranges", "value": 10},{"label": "apples", "value": 7}, {"label": "oranges", "value": 10}]'
+      width="800"
+      height="350"
+    ></bar-chart>
     <script src="./bundle.js"></script>
 
     <script>
-      document.querySelector('road-dropdown').options = {
-        option1: { label: 'Option 1' },
-        option2: { label: 'Option 2' },
-      };
 
-      document
-        .querySelector('road-dropdown')
-        .addEventListener('onChange', value => console.log(value));
+      async function getData(){ 
+
+        let dataLength = Math.floor( (Math.random() * 10) + 10);
+        let dataSet = [];
+
+        for (let index = 0; index < dataLength; index++) {
+          dataSet.push({"label": dataLength, value: Math.floor(Math.random() * 20) + 3}) 
+        }
+        let dataCall = new Promise( (resolve, reject) => {
+          setTimeout(() => {
+            resolve(dataSet)
+          },2000)
+
+        });
+        await dataCall.then((data) => {
+          var list = document.getElementsByTagName('bar-chart')
+          for (let item of list) {
+            item.setAttribute('data', JSON.stringify(data))
+          }
+        });
+      }
+      // setInterval(()=>{
+      //   getData()
+      // },1000)
+     
+
     </script>
   </body>
 </html>

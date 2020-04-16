@@ -1,6 +1,6 @@
 {
-  "name": "road-dropdown",
-  "version": "1.0.8",
+  "name": "bar-component-wc",
+  "version": "0.0.1",
   "description": "Dropdown with Web Components",
   "main": "lib/bundle.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
-  "author": "Robin Wieruch <opensource@rwieruch.com> (https://www.robinwieruch.de)",
+  "author": "Vlad Moldoveanu",
   "license": "MIT",
   "devDependencies": {
     "webpack": "^4.32.2",
