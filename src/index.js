@@ -1,0 +1,2 @@
+import './BarChart.component/barChart';
+
